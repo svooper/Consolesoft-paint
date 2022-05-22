@@ -10,3 +10,5 @@ Controls: W/S/A/D for moving the cursor, space to paint at the cursors position
 C to clear the canvas, E to erase at the cursors position
 
 In the menu use up/down keys to chhose between start/exit and press enter to either exit or start.
+
+IMPORTANT please enter fullscreen mode before starting
