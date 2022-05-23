@@ -288,7 +288,7 @@ bool start() {
 	int index = 0;
 
 	//Prints the menu
-	wordAtXY(104, 20, "CONSOLESOFT PAINT", 13);
+	wordAtXY(106, 20, "CONSOLE PAINT", 13);
 	wordAtXY(110, 22, "START", 15);
 	wordAtXY(110, 24, "QUIT", 8);
 	
