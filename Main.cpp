@@ -51,7 +51,7 @@ void wordAtXY(int x, int y, string word, WORD color) {
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	SetConsoleTextAttribute(StdHandle, color);
-	cout << word; //Prints the word
+	cout << word << endl; //Prints the word
 	return;
 }
 
@@ -119,6 +119,33 @@ void printCoords(int x, int y) {
 	cout << "{" << x << ", " << y << "}"; //Print the coords
 }
 
+void getCustomSymbol() {
+	//Cheks if U is pressed
+	if (GetAsyncKeyState(0x55) & 0x8000) {
+		symbol = '@'; //Sets the symbol to this
+		wordAtXY(147, 26, "Selected symbol: ", FOREGROUND_RED);//Prints the selected symbol
+		printAtXY(165, 26, symbol, FOREGROUND_RED);
+	}
+	//Cheks if I is pressed
+	if (GetAsyncKeyState(0x49) & 0x8000) {
+		symbol = '8';//Sets the symbol to this
+		wordAtXY(147, 26, "Selected symbol: ", FOREGROUND_RED);
+		printAtXY(165, 26, symbol, FOREGROUND_RED);
+	}
+	//Cheks if O is pressed
+	if (GetAsyncKeyState(0x4F) & 0x8000) {
+		symbol = 'O';//Sets the symbol to this
+		wordAtXY(147, 26, "Selected symbol: ", FOREGROUND_RED);//Prints the selected symbol
+		printAtXY(165, 26, symbol, FOREGROUND_RED);
+	}
+	//Cheks if P is pressed
+	if (GetAsyncKeyState(0x50) & 0x8000) {
+		symbol = '*';//Sets the symbol to this
+		wordAtXY(147, 26, "Selected symbol: ", FOREGROUND_RED);//Prints the selected symbol
+		printAtXY(165, 26, symbol, FOREGROUND_RED);
+	}
+}
+
 //Handles the player input
 void input() {
 	//Cheks if D was pressed
@@ -129,16 +156,16 @@ void input() {
 			//Updates the players position
 			player.updatePlayerPos(1, 0, '+');
 			//Cheks if it is painted where the player si about to move if so then dont print the player
-			if (readChar(player.x, player.y) != '@'){
+			if (readChar(player.x, player.y) != symbol){
 				//Prints the player
 				printAtXY(player.x, player.y, player.playerBody, FOREGROUND_RED);
 			}
 			//Makes sure so the old player position was erased if ther was no paint there
-			if (readChar(player.x - 1, player.y) != '@') {
+			if (readChar(player.x - 1, player.y) != symbol) {
 				//Prints a blank space
 				printAtXY(player.x - 1, player.y, ' ', NULL);
 			}
-			Sleep(30);
+			Sleep(45);
 		}
 	}
 	//Cheks if A was pressed
@@ -149,16 +176,16 @@ void input() {
 			//Updates the players position
 			player.updatePlayerPos(1, 0, '-');
 			//Cheks if it is painted where the player si about to move if so then dont print the player
-			if (readChar(player.x, player.y) != '@') {
+			if (readChar(player.x, player.y) != symbol) {
 				//Prints the player
 				printAtXY(player.x, player.y, player.playerBody, FOREGROUND_RED);
 			}
 			//Makes sure so the old player position was erased if ther was no paint there
-			if (readChar(player.x + 1, player.y) != '@') {
+			if (readChar(player.x + 1, player.y) != symbol) {
 				//Prints a blank space
 				printAtXY(player.x + 1, player.y, ' ', NULL);
 			}
-			Sleep(30);
+			Sleep(45);
 		}
 	}
 	//Cheks if W was pressed
@@ -169,16 +196,16 @@ void input() {
 			//Updates the players position
 			player.updatePlayerPos(0, 1, '+'); 
 			//Cheks if it is painted where the player si about to move if so then dont print the player
-			if (readChar(player.x, player.y) != '@') {
+			if (readChar(player.x, player.y) != symbol) {
 				//Prints the player
 				printAtXY(player.x, player.y, player.playerBody, FOREGROUND_RED);
 			}
 			//Makes sure so the old player position was erased if ther was no paint there
-			if (readChar(player.x, player.y - 1) != '@') {
+			if (readChar(player.x, player.y - 1) != symbol) {
 				//Prints a blank space
 				printAtXY(player.x, player.y - 1, ' ', NULL);
 			}
-			Sleep(45);
+			Sleep(60);
 		}
 	}
 	//Cheks if S was pressed
@@ -189,16 +216,16 @@ void input() {
 			//Updates the players position
 			player.updatePlayerPos(0, 1, '-'); 
 			//Cheks if it is painted where the player si about to move if so then dont print the player
-			if (readChar(player.x, player.y) != '@') {
+			if (readChar(player.x, player.y) != symbol) {
 				//Prints the player
 				printAtXY(player.x, player.y, player.playerBody, FOREGROUND_RED);
 			}
 			//Makes sure so the old player position was erased if ther was no paint there
-			if (readChar(player.x, player.y + 1) != '@') {
+			if (readChar(player.x, player.y + 1) != symbol) {
 				//Prints a blank space
 				printAtXY(player.x, player.y + 1, ' ', NULL);
 			}
-			Sleep(45);
+			Sleep(60);
 		}
 	}
 
@@ -235,7 +262,14 @@ void input() {
 		wordAtXY(147, 16, "7: Blue", 9);
 		wordAtXY(147, 17, "8: Gray", 8);
 		wordAtXY(147, 19, "Press C to clear", 13);
-		wordAtXY(147, 19, "Press E to erase", 13);
+		wordAtXY(147, 20, "Press E to erase", 13);
+		wordAtXY(147, 21, "Press U/I/O/P to choose between different symbols", 13);
+		wordAtXY(147, 22, "U: @", 15);
+		wordAtXY(147, 23, "I: 8", 14);
+		wordAtXY(147, 24, "O: O", 13);
+		wordAtXY(147, 25, "P: *", 12);
+		wordAtXY(147, 26, "Selected symbol: ", FOREGROUND_RED);
+		printAtXY(165, 26, symbol, FOREGROUND_RED);
 	}
 }
 
@@ -349,7 +383,14 @@ int main() {
 	wordAtXY(147, 16, "7: Blue", 9);
 	wordAtXY(147, 17, "8: Gray", 8);
 	wordAtXY(147, 19, "Press C to clear", 13);
-	wordAtXY(147, 19, "Press E to erase", 13);
+	wordAtXY(147, 20, "Press E to erase", 13);
+	wordAtXY(147, 21, "Press U/I/O/P to choose between different symbols", 13);
+	wordAtXY(147, 22, "U: @", 15);
+	wordAtXY(147, 23, "I: 8", 14);
+	wordAtXY(147, 24, "O: O", 13);
+	wordAtXY(147, 25, "P: *", 12);
+	wordAtXY(147, 26, "Selected symbol: ", FOREGROUND_RED);
+	printAtXY(165, 26, symbol, FOREGROUND_RED);
 
 	//Main while loop
 	while (!gameOver) {
@@ -361,6 +402,8 @@ int main() {
 		input();
 		//Chek if the color changed
 		changeColor();
+		//Calls the function that gets a custom symbol
+		getCustomSymbol();
 	}
 
 	//Clears the screen and quits
