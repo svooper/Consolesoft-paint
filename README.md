@@ -1,4 +1,4 @@
-# consolepaint
+# Consolesoft Paint
 A painting program meade in C++
 
 I am not very experianced in C++ programming but have some experiance with unity C# and python.
@@ -11,4 +11,4 @@ C to clear the canvas, E to erase at the cursors position
 
 In the menu use up/down keys to chhose between start/exit and press enter to either exit or start.
 
-IMPORTANT please enter fullscreen mode before starting
+IMPORTANT please enter fullscreen mode before starting or else some graphical issues may occur
