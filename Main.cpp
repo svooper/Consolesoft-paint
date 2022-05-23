@@ -222,7 +222,7 @@ void input() {
 
 		printAtXY(player.x, player.y, player.playerBody, FOREGROUND_RED);
 
-		wordAtXY(147, 4, "WELCOME TO CONSOLE PAINT!", 13);
+		wordAtXY(147, 4, "WELCOME TO CONSOLESOFT PAINT!", 13);
 		wordAtXY(147, 6, "Move with W/S/A/D", 13);
 		wordAtXY(147, 7, "Use space to paint", 13);
 		wordAtXY(147, 9, "Use the top number keys 1-8 to choose colors", 13);
@@ -288,7 +288,7 @@ bool start() {
 	int index = 0;
 
 	//Prints the menu
-	wordAtXY(106, 20, "CONSOLE PAINT", 13);
+	wordAtXY(104, 20, "CONSOLESOFT PAINT", 13);
 	wordAtXY(110, 22, "START", 15);
 	wordAtXY(110, 24, "QUIT", 8);
 	
@@ -336,7 +336,7 @@ int main() {
 
 	//Prints the text
 	printCoords(player.x, player.y);
-	wordAtXY(147, 4, "WELCOME TO CONSOLE PAINT!", 13);
+	wordAtXY(147, 4, "WELCOME TO CONSOLESOFT PAINT!", 13);
 	wordAtXY(147, 6, "Move with W/S/A/D", 13);
 	wordAtXY(147, 7, "Use space to paint", 13);
 	wordAtXY(147, 9, "Use the top number keys 1-8 to choose colors", 13);
